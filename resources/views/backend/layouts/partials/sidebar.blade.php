@@ -59,6 +59,14 @@
                     </li>
                     @endif
 
+                    <li>
+                        <a href="{{route('admin.index')}}">Posts</a>
+                    </li>
+                    <li>
+                        <a href="{{route('categories.index')}}">Categories</a>
+                    </li>
+                    
+
                 </ul>
             </nav>
         </div>

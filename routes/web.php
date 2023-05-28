@@ -1,5 +1,8 @@
 <?php
 
+use App\Http\Controllers\CategoriesController;
+use App\Http\Controllers\PostsController;
+use App\Models\Categories;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -42,4 +45,12 @@ Route::group(['prefix' => 'admin'], function () {
     // Forget Password Routes
     Route::get('/password/reset', 'Backend\Auth\ForgetPasswordController@showLinkRequestForm')->name('admin.password.request');
     Route::post('/password/reset/submit', 'Backend\Auth\ForgetPasswordController@reset')->name('admin.password.update');
+    // admin posts
+    Route::get("admin/posts" , [PostsController::class , "index"])->name("admin.index");
+    Route::get("admin/posts/create" , [PostsController::class , "create"])->name("admin.create");
+    Route::post("admin/posts/delete/{id}" , [PostsController::class , "delete"])->name("admin.post.delete");
+    Route::post("admin/posts/store" , [PostsController::class , "store"])->name("admin.store");
+
+    // admin categpries
+    Route::resource("categories" , CategoriesController::class);
 });
